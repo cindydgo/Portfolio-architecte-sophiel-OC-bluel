@@ -95,6 +95,11 @@ nav li {
 	font-size: 1.2em;
 }
 
+nav li a {
+	color: black;
+	text-decoration: none;
+}
+
 li:hover {
 	color: #B1663C;
 }
@@ -205,6 +210,55 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+}
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+	margin: 15ch auto;
+	height: 600px;
+	width: 379px;
+	gap: 20px;
+}
+
+#form-login h2 {
+    margin: 23px auto;
+}
+
+#form-login input {
+	height: 51px;
+	width: 379px;
+	border: none;
+	box-shadow:0px 4px 14px 0px #00000017;
+}
+
+#form-login label {
+	font-weight: 400;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+#form-login button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Syne';
+	background: #1D6154;
+	color: #FFFF;
+	padding: 20px;
+	border-radius: 60px;
+	border: none;
+	margin: 20px auto;
+	width: 179px;
+	height: 36px;
+	cursor: pointer;
+}
+
+#forgot-password {
+	font-size: 13px;
+    margin-inline: auto;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 footer nav ul {
