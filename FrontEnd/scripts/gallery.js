@@ -82,4 +82,45 @@ function displayAllWorks() {
     renderGallery(allWorks)
 }
 
+async function adminLogin() { 
+    const tokken = localStorage.getItem('token')
+    console.log(tokken)
+    if (tokken) {
+        galleryFilters.style.display = "none"
+        topEditionMode()
+        modifyProjects(figureIntro)
+        modifyProjects(myPortfolioTitle)
+        logout()
+    }
+}
+
+function topEditionMode() {
+    const header = document.getElementById('home-page-header')
+    const headerEdition = document.getElementById('headerEdition')
+    const headerDiv = document.createElement('div')
+    header.prepend(headerDiv)
+    header.style.marginTop = "100px"
+    headerDiv.classList.add('black-header')
+    headerEdition.style.display = "flex"
+}
+
+function modifyProjects(parent) {
+    const modifyProjectsText = document.createElement('div')
+    modifyProjectsText.style.display = "flex"
+    modifyProjectsText.style.gap = "10px"
+    modifyProjectsText.style.cursor = "pointer"
+    modifyProjectsText.innerHTML =`<i class="fa-regular fa-pen-to-square"></i><p>modifier</p>`
+    parent.appendChild(modifyProjectsText)
+}
+
+function logout() {
+    const logOutBtn = document.getElementById("login") 
+    logOutBtn.innerText = "logout"
+    logOutBtn.addEventListener("click", () => {
+        window.localStorage.removeItem("token")
+        window.location.href = "./index.html"
+    })
+}
+
 fetchData()
+adminLogin()
