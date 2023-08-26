@@ -26,7 +26,7 @@
 			<li>projets</li>
 			<li>contact</li>
 			<li>
-				<a id="login" href="login.html">login</a>
+				<a id="loginBtn" href="login.html">login</a>
 			</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
@@ -66,9 +66,62 @@
 			<input type="email" name="email" id="email">
 			<label for="message">Message</label>
 			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
+			<input class="contact-from-btn" type="submit" value="Envoyer">
 		</form>
 	</section>
+	<dialog id="modal1" class="dialog" aria-labelledby="modalTitle" role="dialog">
+		<!--first modal-->
+        <div class="modal-wrapper">
+            <button id="closeModalBtn" class="close-modal-btn">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+            <h1 id="modalTitle" class="modal-title">Galerie photo</h1>
+			<div id="modalGallery" class="modal-gallery">
+			</div>
+			<div class="modal-buttons">
+                <button type="submit" id="submitPhotoBtn" class="submit-photo">Ajouter une photo</button>
+		        <button type="reset" class="delete-gallery">Supprimer la gallerie</button>  
+			</div>
+		</div>
+	</dialog>
+	<dialog id="modal2" class="dialog" aria-labelledby="modalTitle" role="dialog">
+	<!--second modal-->
+		<div class="modal-wrapper">
+			<a href="#" class="arrow-left" id="leftArrow">
+            <i class="fa-solid fa-arrow-left"></i>
+			</a>
+            <button id="closeModalBtn" class="close-modal-btn">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+            <h1 id="modalTitle" class="modal-title">Ajout photo</h1>
+			<form id="modalForm" method="post" action="http://localhost:5678/api/works">
+				<div class ="input-file">
+					<img id="filePreview" class="file-preview" onclick="resetForm()">
+					<div id="blueFileContainer" class="blue-file-container">
+					    <img src="assets\images\picture-svgrepo-com 1.png">
+					    <label for="file" class="add-file-btn">+ Ajouter photo</label>
+					    <p class="file-format">jpg,png: 4mo max</p>
+				    </div>
+					<input 
+					    name="image"
+					    id="file" 
+					    style="visibility: hidden;" 
+						type="file" 
+						accept=".jpg,.png" 
+						onchange="loadFile(event)"
+					>
+				</div>
+				<label for="formTitle">Titre</label>
+				<input type="text" name="title" id="formTitle" minlength="3" required>
+				<label for="selectCategory">Catégorie</label>
+				<select id="selectCategory" required>
+					<option></option>
+                </select>
+				<hr class="form-border-bottom"></hr>
+				<button type="submit" id="submitFormBtn" class="submit-photo disabled" disabled>Valider</button>
+			</form>
+		</div>
+    </dialog>
 </main>
 
 <footer>
@@ -79,5 +132,6 @@
 	</nav>
 </footer>
 <script src="scripts/gallery.js"></script>
+<script src="scripts/modal.js"></script>
 </body>
 </html>

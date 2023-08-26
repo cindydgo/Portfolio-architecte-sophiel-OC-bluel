@@ -1,4 +1,4 @@
-const loginForm = document.getElementById('form-login')
+const loginForm = document.getElementById('formLogin')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
 
@@ -6,7 +6,7 @@ loginForm.addEventListener("submit", submitForm)
 
 // submit user object in JSON 
 async function submitForm(e) {
-    e.preventDefault();
+    e.preventDefault()
     let user = {
         email: email.value,
         password: password.value
@@ -19,13 +19,12 @@ async function submitForm(e) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
         })
-        console.log(res)
 // SERVER STATUS RESPONSE OK
         if (res.status === 200) {
             const data = await res.json();
             const token = data.token;
         // save token(jeton d authentification) in local storage
-            localStorage.setItem("token", token);
+            localStorage.setItem("token", JSON.stringify(token))
             window.location.href ="./index.html" 
 // ERROR SERVER STATUS RESPONSE 
         } else if (res.status === 401) {
@@ -36,6 +35,6 @@ async function submitForm(e) {
 
 // CATCH ERRORS
     } catch (error) {
-        alert ('Une erreur est survenue lors de la connexion')
+        console.log('Une erreur est survenue lors de la connexion')
     }
 }

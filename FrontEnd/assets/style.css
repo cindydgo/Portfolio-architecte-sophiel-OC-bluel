@@ -3,6 +3,10 @@
    License: none (public domain)
 */
 
+:root {
+	--hover-btn-bg-color: #081c11;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -30,6 +34,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	min-width: 300px;
 }
 ol, ul {
 	list-style: none;
@@ -49,9 +54,13 @@ table {
 /** end reset css**/
 body {
 	max-width: 1400px;
-	margin:auto;
+	margin: auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+
+button {
+	cursor: pointer;
 }
 
 header {
@@ -75,7 +84,6 @@ header {
 	width: 100%;
 	position: fixed;
 	top: 11px;
-	z-index: 1;
 	flex-wrap: nowrap;
 	align-items: baseline;
 	justify-content: center;
@@ -96,7 +104,6 @@ header {
 	border: none;
 	padding: 10px 20px;
 	margin-left: 20px;
-	cursor: pointer;
 }
 
 section {
@@ -140,7 +147,7 @@ nav li a {
 	text-decoration: none;
 }
 
-li:hover {
+li:hover, a:hover {
 	color: #B1663C;
 }
 
@@ -184,6 +191,12 @@ li:hover {
 	gap: 25px;
 }
 
+.modify-projects {
+    display: flex;
+	gap: 10px;
+	cursor: pointer;
+}
+
 #galleryFilters {
     display: flex;
 	justify-content: center;
@@ -200,7 +213,6 @@ li:hover {
 	border-radius: 60px;
 	padding-left: 15px;
 	padding-right: 15px;
-	cursor: pointer;
 }
 
 .active {
@@ -264,7 +276,217 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
-#form-login {
+.contact-from-btn:hover {
+	background: var(--hover-btn-bg-color);
+}
+
+/***************** FIRST MODAL *****************/
+.dialog {
+	position: fixed;
+	top: 0;
+	border: none;
+	border-radius: 10px;
+	width: 630px;
+	animation: slideFromTop .3s both;
+	-webkit-animation: slideFromTop .3s both;
+}
+
+.dialog .modal-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 35px 90px;
+	/*max-height: calc(100vh - 30px);*/
+	position: relative;
+	background: #FFF;
+}
+
+::backdrop {
+	--bg-color: rgba(0, 0, 0, 0.3);
+}
+
+dialog::backdrop {
+	background-color: var(--bg-color);
+}
+
+.modal-title {
+	font-family: 'Work Sans';
+	font-size: 26px;
+	font-weight: 400;
+	color: black;
+	margin-top: 10px;
+}
+
+.close-modal-btn {
+	font-size: 1.5em; /*24px*/
+	border: none;
+    background: none;
+	position: absolute;
+	top: 10px;
+	right: 0;
+}
+
+.modal-gallery {
+	display: flex;
+	flex-grow: 1;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #B3B3B3;
+	width: 100%;
+	padding-bottom: 50px;
+	margin-top: 50px;
+	gap: 15px 10px;
+}
+
+.modal-images {
+    position: relative;
+	cursor: pointer;
+}
+
+.modal-image {
+	width: 76.86px;
+	height: 102.57px;
+	margin-bottom: 5px;
+}
+
+.delete-icons {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 1;
+}
+
+.move-btn {
+	position: absolute;
+    top: 5px;
+    right: 25px;
+}
+
+.modal-gallery figcaption {
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.modal-buttons {
+	display: flex;
+	flex-direction: column;
+}
+
+.submit-photo {
+	height: 36px;
+	width: 237px;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2.5em auto 2em;
+	border-radius: 60px;
+	border: none;
+}
+
+.submit-photo:hover  {
+	background: var(--hover-btn-bg-color);
+}
+
+.delete-gallery {
+	font-family: 'Syne';
+	font-weight: normal;
+	color: rgb(233, 28, 28);
+	background: none;
+	border: none;
+}
+
+/***************** SECOND MODAL *****************/
+
+.arrow-left {
+	font-size: 21px;
+	position: absolute;
+	left: 15px;
+    top: 10px;
+}
+
+#modalForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 15px;
+	width: 100%;
+	padding-top: 2rem;
+}
+
+#modalForm .input-file {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    height: 169px;
+	padding-top: 1.5rem;
+	margin-bottom: 1rem;
+	box-sizing: border-box;
+	background: #E8F1F6;
+}
+
+#modalForm .blue-file-container {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#modalForm .add-file-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 36px;
+	width: 173px;
+	margin: 15px 0 8px;
+	color: #0a5870;
+	background: #b2bfc7;
+	border-radius: 60px;
+	cursor: pointer;
+}
+
+#modalForm .file-format {
+	font-size: 10px;
+}
+
+#modalForm .file-preview {
+	position: absolute;
+	top: 0;
+	display: none;
+	height: 169px;
+	cursor: pointer;
+}
+
+#modalForm input[type="text"], select {
+	font-family: "Work Sans";
+	color: #444444;
+	padding: 1rem;
+	border: none;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+#modalForm label {
+    font-weight: 500;
+}
+
+#modalForm hr {
+    border-bottom: 0 solid #B3B3B3;
+	width: 100%;
+	margin: 2rem 0 0;
+}
+
+#modalForm .disabled {
+	background: #A7A7A7;
+	margin: 1rem auto 0;
+}
+
+@keyframes slideFromTop {
+	from {transform: translate-Y(-50x)}
+	to {transform: translate-Y(0)}
+}
+
+/***************** LOGIN PAGE *****************/
+#formLogin {
     display: flex;
     flex-direction: column;
 	margin: 15ch auto;
@@ -273,24 +495,24 @@ input[type="submit"]{
 	gap: 20px;
 }
 
-#form-login h2 {
+#formLogin h2 {
     margin: 23px auto;
 }
 
-#form-login input {
+#formLogin input {
 	height: 51px;
 	width: 379px;
 	border: none;
 	box-shadow:0px 4px 14px 0px #00000017;
 }
 
-#form-login label {
+#formLogin label {
 	font-weight: 400;
 	font-size: 14px;
 	margin-bottom: 5px;
 }
 
-#form-login button {
+#formLogin button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -303,7 +525,10 @@ input[type="submit"]{
 	margin: 20px auto;
 	width: 179px;
 	height: 36px;
-	cursor: pointer;
+}
+
+#formLogin button:hover {
+	background: var(--hover-btn-bg-color);
 }
 
 #forgot-password {

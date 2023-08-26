@@ -2,7 +2,7 @@ const URLApi = 'http://localhost:5678/api/'
 const gallery = document.getElementById('gallery')
 const galleryFilters = document.getElementById('galleryFilters')
 //will store data fetch from api 
-let worksData = new Set ()
+let worksData = new Set()
 
 async function fetchData() {
     try {
@@ -19,7 +19,7 @@ async function fetchData() {
     }
 
     renderGallery(data)
-    } catch (err) {alert (`Error : ${err}`)}
+    } catch (err) {console.log (`Error : ${err}`)}
 }
 
 function renderGallery(images){
@@ -45,7 +45,7 @@ async function fetchCategories() {
 
     const categories = await res.json()
     return categories
-    } catch (err) {alert (`Error : ${err}`)}
+    } catch (err) {console.log (`Error : ${err}`)}
 }
 
 fetchCategories().then(categories => {
@@ -82,9 +82,9 @@ function displayAllWorks() {
     renderGallery(allWorks)
 }
 
+
 async function adminLogin() { 
     const tokken = localStorage.getItem('token')
-    console.log(tokken)
     if (tokken) {
         galleryFilters.style.display = "none"
         topEditionMode()
@@ -106,19 +106,18 @@ function topEditionMode() {
 
 function modifyProjects(parent) {
     const modifyProjectsText = document.createElement('div')
-    modifyProjectsText.style.display = "flex"
-    modifyProjectsText.style.gap = "10px"
-    modifyProjectsText.style.cursor = "pointer"
+    modifyProjectsText.classList.add('modify-projects')
     modifyProjectsText.innerHTML =`<i class="fa-regular fa-pen-to-square"></i><p>modifier</p>`
     parent.appendChild(modifyProjectsText)
 }
 
 function logout() {
-    const logOutBtn = document.getElementById("login") 
+    const logOutBtn = document.getElementById("loginBtn") 
     logOutBtn.innerText = "logout"
     logOutBtn.addEventListener("click", () => {
+        alert('Vous allez être déconnecté.')
         window.localStorage.removeItem("token")
-        window.location.href = "./index.html"
+        logOutBtn.href = "./index.html"
     })
 }
 
